@@ -1,9 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
-import Badges from './pages/Badges'
-import BadgeNew from './pages/BadgeNew'
+import App from './components/App'
+import './global.css'
 
 const container = document.getElementById('root')
 
-ReactDOM.render(<Badges />, container)
+ReactDOM.render(<App />, container)

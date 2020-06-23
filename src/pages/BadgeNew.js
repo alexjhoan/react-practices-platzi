@@ -1,5 +1,4 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
 import header from '../images/badge-header.svg'
 import Badge from '../components/Badge'
 import BadgeForm from '../components/BadgeForm'
@@ -30,7 +29,6 @@ export class BadgeNew extends React.Component {
 	render() {
 		return (
 			<div>
-				<Navbar />
 				<div className="BadgeNew__hero">
 					<img src={header} className="img-fluid" alt="logo" />
 				</div>
