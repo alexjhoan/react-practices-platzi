@@ -1,7 +1,8 @@
 import React from 'react'
-import header from '../images/badge-header.svg'
+import header from '../images/platziconf-logo.svg'
 import Badge from '../components/Badge'
 import BadgeForm from '../components/BadgeForm'
+import api from '../api'
 import './styles/BadgeNew.css'
 
 
@@ -26,6 +27,19 @@ export class BadgeNew extends React.Component {
 		})
 	}
 
+	handleSubmit = async e =>{
+		e.preventDefault()
+		this.setState({loading:true, error: null})
+
+		try{
+			await api.badges.create(this.state.form)
+			this.setState({loading:false})
+		}catch (error) {
+			this.setState({loading:false, error: error})
+		}
+		window.location = "/badges"
+	}
+
 	render() {
 		return (
 			<div>
@@ -39,13 +53,14 @@ export class BadgeNew extends React.Component {
 								firstName= {this.state.form.firstName || "Alex"}
 								secundName= {this.state.form.secondName || "Jhoan"}
 								lastName= {this.state.form.lastName || "Vivas"}
+								email= {this.state.form.email || "correo@correo.com"}
 								twitter= {this.state.form.twitter || "NoTengoTwitter"}
 								jobTitle= {this.state.form.jobTitle || "Web Developer"}
-								avatarUrl= "https://www.gravatar.com/avatar/HASH"
 							/>
 						</div>
 						<div className="col-6">
 							<BadgeForm
+								onSubmit={this.handleSubmit}
 								onChange={this.handleChange}
 								formValues={this.state.form}
 							/>

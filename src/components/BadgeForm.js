@@ -25,7 +25,7 @@ export class BadgeForm extends React.Component {
 		return (
 			<div>
 				<h1>Nuevo</h1>
-				<form onSubmit={this.handleSubmit}>
+				<form onSubmit={this.props.onSubmit}>
 					<div className="form-group">
 						<label id="first-name">primer nombre</label>
 						<input
